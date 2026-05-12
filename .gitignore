@@ -1,0 +1,16 @@
+# Generated outputs and downloaded data — regenerated on every run
+data/
+output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp

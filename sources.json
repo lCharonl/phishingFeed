@@ -1,0 +1,22 @@
+{
+    "FadeMind": "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts",
+    "DandelionSprout": "https://github.com/DandelionSprout/adfilt/raw/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt",
+    "QuidsUp": "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt",
+    "Mitchell_Krog": "https://raw.githubusercontent.com/mitchellkrogza/Badd-Boyz-Hosts/master/hosts",
+    "Miroslav_Stampar": "https://raw.githubusercontent.com/stamparm/blackbook/master/blackbook.txt",
+    "MetaMask": "https://raw.githubusercontent.com/MetaMask/eth-phishing-detect/master/src/hosts.txt",
+    "The_Block_List_Project_Fraud": "https://blocklistproject.github.io/Lists/alt-version/fraud-nl.txt",
+    "The_Block_List_Project_Ransomware": "https://blocklistproject.github.io/Lists/alt-version/ransomware-nl.txt",
+    "GlobalAntiScamOrg": "https://raw.githubusercontent.com/elliotwutingfeng/GlobalAntiScamOrg-blocklist/main/global-anti-scam-org-scam-urls-pihole.txt",
+    "The_Block_List_Project_Scam": "https://blocklistproject.github.io/Lists/alt-version/scam-nl.txt",
+    "KADhosts": "https://raw.githubusercontent.com/FiltersHeroes/KADhosts/master/KADhosts.txt",
+    "CERT_Polska": "https://hole.cert.pl/domains/domains.txt",
+    "Hexxium_Creations": "https://raw.githubusercontent.com/HexxiumCreations/threat-list/gh-pages/hosts.txt",
+    "USOM": "https://www.usom.gov.tr/url-list.txt",
+    "OpenPhish": "https://openphish.com/feed.txt",
+    "Phishing_Army": "https://phishing.army/download/phishing_army_blocklist_extended.txt",
+    "ThreatFox": "https://threatfox.abuse.ch/downloads/hostfile",
+    "StopForumSpam_ToxicDomains": "https://www.stopforumspam.com/downloads/toxic_domains_whole.txt",
+    "Abuse.ch": "https://urlhaus.abuse.ch/downloads/hostfile/",
+    "Redflag": "https://dl.red.flag.domains/red.flag.domains.txt"
+}

@@ -1,0 +1,13 @@
+# Whitelist manuelle — un domaine par ligne.
+# Les domaines listés ici sont automatiquement exclus de consolidated.hosts
+# et apparaissent dans false_positives.csv avec la raison "whitelist".
+#
+# Formats acceptés (les commentaires inline `#` sont ignorés) :
+#   example.com
+#   sub.example.com
+#   0.0.0.0 example.com      # format hosts toléré
+#
+# Exemples (décommenter au besoin) :
+# microsoft.com
+# google.com
+# github.com
