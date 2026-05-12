@@ -90,7 +90,7 @@ The 51 strict FPs excluded from `consolidated.hosts` are dominated by widely-use
 
 The full review list (`false_positives.csv`, 2,620 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
 
-<sub>Auto-generated from `output/last_run.json` at 2026-05-12 09:06:11 UTC. Do not edit this section by hand.</sub>
+<sub>Auto-generated from `output/last_run.json` at 2026-05-12 09:21:01 UTC. Do not edit this section by hand.</sub>
 <!-- END AUTO-KPI -->
 
 ## Download the daily feed
