@@ -31,8 +31,8 @@ Numbers from the latest run committed in `output/` (run on **2026-05-12**, defau
 | Metric | Value |
 |---|---:|
 | Sources monitored | **20** |
-| Unique IOCs aggregated | **1,038,327** |
-| Entries in `consolidated.hosts` | **1,038,276** |
+| Unique IOCs aggregated | **1,038,367** |
+| Entries in `consolidated.hosts` | **1,038,316** |
 | Strict false positives excluded (Tranco top 10,000 + whitelist) | **51** |
 | FP review candidates reported (any Tranco rank) | **2,620** |
 
@@ -42,9 +42,9 @@ How many sources independently report each IOC. Most threats are seen by a singl
 
 | Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
 |---|---:|---:|---:|
-| 1 source | 904,526 | 87.1 % | 1,038,327 (N=1) |
-| 2 sources | 113,209 | 10.9 % | **133,801 (N=2)** |
-| 3 sources | 20,572 | 2.0 % | **20,592 (N=3)** |
+| 1 source | 904,646 | 87.1 % | 1,038,367 (N=1) |
+| 2 sources | 113,130 | 10.9 % | **133,721 (N=2)** |
+| 3 sources | 20,571 | 2.0 % | **20,591 (N=3)** |
 | 4 sources | 20 | 0.0 % | **20 (N=4)** |
 
 Raise `--min-consensus` to trade coverage for confidence depending on tolerance for false positives in downstream blocking.
@@ -55,12 +55,12 @@ Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
 
 | Source | Valid IOCs | Unique | Overlap % | Notes |
 |---|---:|---:|---:|---|
-| USOM | 450,421 | 448,581 | 0.4 % | Turkish CERT — massive, mostly long-tail |
+| USOM | 450,424 | 448,584 | 0.4 % | Turkish CERT — massive, mostly long-tail |
 | The_Block_List_Project_Fraud | 195,998 | 195,627 | 0.2 % | Fraud-focused, highly differentiated |
-| Phishing_Army | 145,046 | 13,978 | 90.4 % | Re-aggregator; corroborates others |
-| CERT_Polska | 132,657 | 1,616 | 98.8 % | Polish CERT; mostly overlaps |
+| Phishing_Army | 145,046 | 14,058 | 90.3 % | Re-aggregator; corroborates others |
+| CERT_Polska | 132,607 | 1,647 | 98.8 % | Polish CERT; mostly overlaps |
 | StopForumSpam_ToxicDomains | 72,558 | 72,492 | 0.1 % | Forum-spam domains, niche |
-| ThreatFox | 57,791 | 56,886 | 1.6 % | abuse.ch malware C2 — high value |
+| ThreatFox | 57,797 | 56,892 | 1.6 % | abuse.ch malware C2 — high value |
 | KADhosts | 47,493 | 26,487 | 44.2 % | Mixed phishing + ads |
 | Redflag | 36,687 | 36,667 | 0.1 % | FR phishing focus |
 | Miroslav_Stampar | 18,146 | 17,183 | 5.3 % | Maltrail blackbook |
@@ -90,7 +90,11 @@ The 51 strict FPs excluded from `consolidated.hosts` are dominated by widely-use
 
 The full review list (`false_positives.csv`, 2,620 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
 
+<<<<<<< HEAD
 <sub>Auto-generated from `output/last_run.json` at 2026-05-12 09:21:01 UTC. Do not edit this section by hand.</sub>
+=======
+<sub>Auto-generated from `output/last_run.json` at 2026-05-12 09:12:41 UTC. Do not edit this section by hand.</sub>
+>>>>>>> 36efed5bb5ae53ab851dacf5243434d9ab43d32e
 <!-- END AUTO-KPI -->
 
 ## Download the daily feed
