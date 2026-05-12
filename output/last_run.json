@@ -1,9 +1,15 @@
 {
-  "run_at": "2026-05-12T08:55:10+00:00",
+  "run_at": "2026-05-12T09:06:11+00:00",
   "total_unique_iocs": 1038327,
   "consolidated_kept": 1038276,
   "false_positives_excluded": 51,
-  "false_positives_reported": 51,
+  "false_positives_reported": 2620,
+  "consensus_distribution": {
+    "1": 904526,
+    "2": 113209,
+    "3": 20572,
+    "4": 20
+  },
   "sources": {
     "FadeMind": 2189,
     "DandelionSprout": 11988,

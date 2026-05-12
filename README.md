@@ -22,8 +22,9 @@ The output answers questions like:
 
 ## Results snapshot
 
-Numbers from the latest run committed in `output/` (run on **2026-05-12**, default
-parameters: `--min-consensus 1 --fp-threshold 10000`).
+<!-- BEGIN AUTO-KPI -->
+
+Numbers from the latest run committed in `output/` (run on **2026-05-12**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
 
 ### Volume
 
@@ -32,29 +33,25 @@ parameters: `--min-consensus 1 --fp-threshold 10000`).
 | Sources monitored | **20** |
 | Unique IOCs aggregated | **1,038,327** |
 | Entries in `consolidated.hosts` | **1,038,276** |
-| Strict false positives excluded (Tranco top 10k + whitelist) | **51** |
+| Strict false positives excluded (Tranco top 10,000 + whitelist) | **51** |
 | FP review candidates reported (any Tranco rank) | **2,620** |
 
 ### Consensus distribution
 
-How many sources independently report each IOC. Most threats are seen by a single feed
-because sources specialize in different threat categories.
+How many sources independently report each IOC. Most threats are seen by a single feed because sources specialize in different threat categories.
 
 | Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
 |---|---:|---:|---:|
 | 1 source | 904,526 | 87.1 % | 1,038,327 (N=1) |
-| 2 sources | 113,209 | 10.9 % | **133,801 (N=2)** — 87 % volume reduction |
-| 3 sources | 20,572 | 2.0 % | **20,592 (N=3)** — high confidence |
-| 4 sources | 20 | < 0.01 % | **20 (N=4)** — maximum corroboration |
+| 2 sources | 113,209 | 10.9 % | **133,801 (N=2)** |
+| 3 sources | 20,572 | 2.0 % | **20,592 (N=3)** |
+| 4 sources | 20 | 0.0 % | **20 (N=4)** |
 
-Raise `--min-consensus` to trade coverage for confidence depending on tolerance for
-false positives in downstream blocking.
+Raise `--min-consensus` to trade coverage for confidence depending on tolerance for false positives in downstream blocking.
 
 ### Per-source contribution
 
-Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
-high values mean the source carries differentiated intel; high `overlap %` means
-the source is largely a re-aggregation of others.
+Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports — high values mean the source carries differentiated intel; high `overlap %` means the source is largely a re-aggregation of others.
 
 | Source | Valid IOCs | Unique | Overlap % | Notes |
 |---|---:|---:|---:|---|
@@ -75,26 +72,26 @@ the source is largely a re-aggregation of others.
 | Mitchell_Krog | 1,384 | 1,367 | 1.2 % | Badd-Boyz-Hosts |
 | The_Block_List_Project_Scam | 1,274 | 1,195 | 6.2 % | Scam-focused |
 | MetaMask | 1,071 | 1,069 | 0.2 % | Crypto-phishing wallets |
-| Abuse.ch (URLhaus) | 682 | 359 | 47.4 % | URLhaus active hosts |
+| Abuse.ch | 682 | 359 | 47.4 % | URLhaus active hosts |
 | OpenPhish | 239 | 136 | 43.1 % | Live phishing, very fresh |
 | QuidsUp | 138 | 117 | 15.2 % | Small malware list |
 
 ### False positives intercepted
 
-The 51 strict FPs excluded from `consolidated.hosts` are dominated by widely-used
-platforms incorrectly flagged in one feed. A sample of what gets caught:
+The 51 strict FPs excluded from `consolidated.hosts` are dominated by widely-used platforms incorrectly flagged in one feed. A sample of what gets caught:
 
 | Domain | Tranco rank | Reported by |
 |---|---:|---|
 | myshopify.com | 321 | GlobalAntiScamOrg |
 | vkontakte.ru | 482 | Phishing_Army |
-| us.com | 1,004 | GlobalAntiScamOrg |
-| telegra.ph | 2,036 | StopForumSpam_ToxicDomains |
-| mgid.com | 2,168 | KADhosts |
+| us.com | 1004 | GlobalAntiScamOrg |
+| sportybet.com | 1392 | StopForumSpam_ToxicDomains |
+| ey43.com | 1516 | DandelionSprout |
 
-The full review list (`false_positives.csv`, 2,620 entries) also includes lower-popularity
-domains that **are not** excluded automatically — review and extend `whitelist.txt`
-as needed.
+The full review list (`false_positives.csv`, 2,620 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
+
+<sub>Auto-generated from `output/last_run.json` at 2026-05-12 09:06:11 UTC. Do not edit this section by hand.</sub>
+<!-- END AUTO-KPI -->
 
 ## Download the daily feed
 

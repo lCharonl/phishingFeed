@@ -1,0 +1,22 @@
+{
+    "USOM": "Turkish CERT — massive, mostly long-tail",
+    "The_Block_List_Project_Fraud": "Fraud-focused, highly differentiated",
+    "Phishing_Army": "Re-aggregator; corroborates others",
+    "CERT_Polska": "Polish CERT; mostly overlaps",
+    "StopForumSpam_ToxicDomains": "Forum-spam domains, niche",
+    "ThreatFox": "abuse.ch malware C2 — high value",
+    "KADhosts": "Mixed phishing + ads",
+    "Redflag": "FR phishing focus",
+    "Miroslav_Stampar": "Maltrail blackbook",
+    "DandelionSprout": "Anti-malware filter list",
+    "GlobalAntiScamOrg": "Scam-specific, unique angle",
+    "Hexxium_Creations": "Curated malicious hosts",
+    "FadeMind": "Hosts.extras risk list",
+    "The_Block_List_Project_Ransomware": "Ransomware-only",
+    "Mitchell_Krog": "Badd-Boyz-Hosts",
+    "The_Block_List_Project_Scam": "Scam-focused",
+    "MetaMask": "Crypto-phishing wallets",
+    "Abuse.ch": "URLhaus active hosts",
+    "OpenPhish": "Live phishing, very fresh",
+    "QuidsUp": "Small malware list"
+}

@@ -231,8 +231,8 @@ def write_iocs_csv(path: Path, ioc_sources: dict[str, set[str]],
 
 def write_fp_csv(path: Path, ioc_sources: dict[str, set[str]],
                  tranco: dict[str, int], whitelist: set[str],
-                 fp_threshold: int) -> int:
-    """Reporte tous les FP candidats. Retourne le nombre de FP `stricts` (exclus)."""
+                 fp_threshold: int) -> tuple[int, int]:
+    """Write FP candidates. Returns (strict_excluded_count, total_reported_count)."""
     strict_count = 0
     rows = []
     for d, srcs in ioc_sources.items():
@@ -262,7 +262,7 @@ def write_fp_csv(path: Path, ioc_sources: dict[str, set[str]],
             w.writerow([d, rank if rank is not None else "",
                         "yes" if in_wl else "", sc, ";".join(srcs),
                         "+".join(reasons), "yes" if strict else ""])
-    return strict_count
+    return strict_count, len(rows)
 
 
 def write_stats_csv(path: Path, sources: dict[str, str],
@@ -358,8 +358,9 @@ def run(args: argparse.Namespace) -> int:
     write_iocs_csv(iocs_path, ioc_sources, tranco, whitelist)
     log(f"-> {iocs_path.relative_to(ROOT)}")
 
-    strict_fp = write_fp_csv(fp_path, ioc_sources, tranco, whitelist, args.fp_threshold)
-    log(f"-> {fp_path.relative_to(ROOT)} ({strict_fp} strict FPs excluded)")
+    strict_fp, total_fp = write_fp_csv(fp_path, ioc_sources, tranco, whitelist, args.fp_threshold)
+    log(f"-> {fp_path.relative_to(ROOT)} ({strict_fp} strict FPs excluded, "
+        f"{total_fp} candidates reported)")
 
     write_stats_csv(stats_path, sources, per_source_domains,
                     per_source_raw_lines, ioc_sources, meta)
@@ -375,12 +376,17 @@ def run(args: argparse.Namespace) -> int:
     log(f"-> {cons_path.relative_to(ROOT)} ({kept_n:,} entries, "
         f"consensus >= {args.min_consensus})")
 
+    consensus_dist: dict[int, int] = defaultdict(int)
+    for srcs in ioc_sources.values():
+        consensus_dist[len(srcs)] += 1
+
     summary = {
         "run_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "total_unique_iocs": len(ioc_sources),
         "consolidated_kept": kept_n,
         "false_positives_excluded": len(excluded),
-        "false_positives_reported": strict_fp,
+        "false_positives_reported": total_fp,
+        "consensus_distribution": {str(k): consensus_dist[k] for k in sorted(consensus_dist)},
         "sources": {name: len(per_source_domains.get(name, set())) for name in sources},
         "fetch_meta": meta,
         "params": {
