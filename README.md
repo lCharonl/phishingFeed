@@ -20,7 +20,111 @@ The output answers questions like:
 - Stdlib-only Python — no `pip install` required
 - Idempotent and cron-friendly
 
-## Quick start
+## Results snapshot
+
+Numbers from the latest run committed in `output/` (run on **2026-05-12**, default
+parameters: `--min-consensus 1 --fp-threshold 10000`).
+
+### Volume
+
+| Metric | Value |
+|---|---:|
+| Sources monitored | **20** |
+| Unique IOCs aggregated | **1,038,327** |
+| Entries in `consolidated.hosts` | **1,038,276** |
+| Strict false positives excluded (Tranco top 10k + whitelist) | **51** |
+| FP review candidates reported (any Tranco rank) | **2,620** |
+
+### Consensus distribution
+
+How many sources independently report each IOC. Most threats are seen by a single feed
+because sources specialize in different threat categories.
+
+| Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
+|---|---:|---:|---:|
+| 1 source | 904,526 | 87.1 % | 1,038,327 (N=1) |
+| 2 sources | 113,209 | 10.9 % | **133,801 (N=2)** — 87 % volume reduction |
+| 3 sources | 20,572 | 2.0 % | **20,592 (N=3)** — high confidence |
+| 4 sources | 20 | < 0.01 % | **20 (N=4)** — maximum corroboration |
+
+Raise `--min-consensus` to trade coverage for confidence depending on tolerance for
+false positives in downstream blocking.
+
+### Per-source contribution
+
+Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
+high values mean the source carries differentiated intel; high `overlap %` means
+the source is largely a re-aggregation of others.
+
+| Source | Valid IOCs | Unique | Overlap % | Notes |
+|---|---:|---:|---:|---|
+| USOM | 450,421 | 448,581 | 0.4 % | Turkish CERT — massive, mostly long-tail |
+| The_Block_List_Project_Fraud | 195,998 | 195,627 | 0.2 % | Fraud-focused, highly differentiated |
+| Phishing_Army | 145,046 | 13,978 | 90.4 % | Re-aggregator; corroborates others |
+| CERT_Polska | 132,657 | 1,616 | 98.8 % | Polish CERT; mostly overlaps |
+| StopForumSpam_ToxicDomains | 72,558 | 72,492 | 0.1 % | Forum-spam domains, niche |
+| ThreatFox | 57,791 | 56,886 | 1.6 % | abuse.ch malware C2 — high value |
+| KADhosts | 47,493 | 26,487 | 44.2 % | Mixed phishing + ads |
+| Redflag | 36,687 | 36,667 | 0.1 % | FR phishing focus |
+| Miroslav_Stampar | 18,146 | 17,183 | 5.3 % | Maltrail blackbook |
+| DandelionSprout | 11,988 | 11,910 | 0.7 % | Anti-malware filter list |
+| GlobalAntiScamOrg | 11,193 | 11,188 | 0.0 % | Scam-specific, unique angle |
+| Hexxium_Creations | 3,881 | 3,763 | 3.0 % | Curated malicious hosts |
+| FadeMind | 2,189 | 2,112 | 3.5 % | Hosts.extras risk list |
+| The_Block_List_Project_Ransomware | 1,904 | 1,793 | 5.8 % | Ransomware-only |
+| Mitchell_Krog | 1,384 | 1,367 | 1.2 % | Badd-Boyz-Hosts |
+| The_Block_List_Project_Scam | 1,274 | 1,195 | 6.2 % | Scam-focused |
+| MetaMask | 1,071 | 1,069 | 0.2 % | Crypto-phishing wallets |
+| Abuse.ch (URLhaus) | 682 | 359 | 47.4 % | URLhaus active hosts |
+| OpenPhish | 239 | 136 | 43.1 % | Live phishing, very fresh |
+| QuidsUp | 138 | 117 | 15.2 % | Small malware list |
+
+### False positives intercepted
+
+The 51 strict FPs excluded from `consolidated.hosts` are dominated by widely-used
+platforms incorrectly flagged in one feed. A sample of what gets caught:
+
+| Domain | Tranco rank | Reported by |
+|---|---:|---|
+| myshopify.com | 321 | GlobalAntiScamOrg |
+| vkontakte.ru | 482 | Phishing_Army |
+| us.com | 1,004 | GlobalAntiScamOrg |
+| telegra.ph | 2,036 | StopForumSpam_ToxicDomains |
+| mgid.com | 2,168 | KADhosts |
+
+The full review list (`false_positives.csv`, 2,620 entries) also includes lower-popularity
+domains that **are not** excluded automatically — review and extend `whitelist.txt`
+as needed.
+
+## Download the daily feed
+
+A GitHub Actions workflow regenerates the blocklist every day at 06:00 UTC and
+publishes it as a rolling `latest` GitHub release. The URLs below always point to
+the most recent build — fetch them daily with `curl` / `wget` / your DNS resolver:
+
+```bash
+# Ready-to-use hosts blocklist
+curl -fSLO https://github.com/<owner>/phishingFeed/releases/latest/download/consolidated.hosts
+
+# Per-source quality stats
+curl -fSLO https://github.com/<owner>/phishingFeed/releases/latest/download/stats.csv
+
+# False-positive review list
+curl -fSLO https://github.com/<owner>/phishingFeed/releases/latest/download/false_positives.csv
+```
+
+Replace `<owner>` with the GitHub user/org hosting the repo.
+
+### Pi-hole / unbound / dnsmasq
+
+Point your resolver at the raw URL of `consolidated.hosts`. Pi-hole example:
+
+```
+Settings → Adlists → Add:
+https://github.com/<owner>/phishingFeed/releases/latest/download/consolidated.hosts
+```
+
+## Quick start (run it yourself)
 
 Requires Python 3.10+ (uses `X | Y` type hints).
 
