@@ -1,6 +1,5 @@
 # Generated outputs and downloaded data — regenerated on every run
 data/
-output/
 
 # Python
 __pycache__/
