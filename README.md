@@ -24,17 +24,17 @@ The output answers questions like:
 
 <!-- BEGIN AUTO-KPI -->
 
-Numbers from the latest run committed in `output/` (run on **2026-05-21**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
+Numbers from the latest run committed in `output/` (run on **2026-05-22**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
 
 ### Volume
 
 | Metric | Value |
 |---|---:|
 | Sources monitored | **20** |
-| Unique IOCs aggregated | **592,661** |
-| Entries in `consolidated.hosts` | **592,624** |
-| Strict false positives excluded (Tranco top 10,000 + whitelist) | **37** |
-| FP review candidates reported (any Tranco rank) | **2,043** |
+| Unique IOCs aggregated | **1,042,612** |
+| Entries in `consolidated.hosts` | **1,042,565** |
+| Strict false positives excluded (Tranco top 10,000 + whitelist) | **47** |
+| FP review candidates reported (any Tranco rank) | **2,714** |
 
 ### Consensus distribution
 
@@ -42,10 +42,10 @@ How many sources independently report each IOC. Most threats are seen by a singl
 
 | Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
 |---|---:|---:|---:|
-| 1 source | 460,298 | 77.7 % | 592,661 (N=1) |
-| 2 sources | 110,414 | 18.6 % | **132,363 (N=2)** |
-| 3 sources | 21,930 | 3.7 % | **21,949 (N=3)** |
-| 4 sources | 19 | 0.0 % | **19 (N=4)** |
+| 1 source | 908,826 | 87.2 % | 1,042,612 (N=1) |
+| 2 sources | 112,110 | 10.8 % | **133,786 (N=2)** |
+| 3 sources | 21,647 | 2.1 % | **21,676 (N=3)** |
+| 4 sources | 29 | 0.0 % | **29 (N=4)** |
 
 Raise `--min-consensus` to trade coverage for confidence depending on tolerance for false positives in downstream blocking.
 
@@ -55,42 +55,42 @@ Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
 
 | Source | Valid IOCs | Unique | Overlap % | Notes |
 |---|---:|---:|---:|---|
-| The_Block_List_Project_Fraud | 195,998 | 195,732 | 0.1 % | Fraud-focused, highly differentiated |
-| Phishing_Army | 146,126 | 14,603 | 90.0 % | Re-aggregator; corroborates others |
-| CERT_Polska | 132,881 | 1,461 | 98.9 % | Polish CERT; mostly overlaps |
-| StopForumSpam_ToxicDomains | 72,764 | 72,707 | 0.1 % | Forum-spam domains, niche |
-| ThreatFox | 58,361 | 58,172 | 0.3 % | abuse.ch malware C2 — high value |
-| KADhosts | 49,833 | 27,337 | 45.1 % | Mixed phishing + ads |
-| Redflag | 37,087 | 37,071 | 0.0 % | FR phishing focus |
-| Miroslav_Stampar | 18,146 | 18,108 | 0.2 % | Maltrail blackbook |
-| DandelionSprout | 11,988 | 11,934 | 0.5 % | Anti-malware filter list |
-| GlobalAntiScamOrg | 11,193 | 11,189 | 0.0 % | Scam-specific, unique angle |
-| Hexxium_Creations | 3,881 | 3,769 | 2.9 % | Curated malicious hosts |
-| FadeMind | 2,189 | 2,118 | 3.2 % | Hosts.extras risk list |
-| The_Block_List_Project_Ransomware | 1,904 | 1,904 | 0.0 % | Ransomware-only |
-| Mitchell_Krog | 1,384 | 1,370 | 1.0 % | Badd-Boyz-Hosts |
+| USOM | 452,086 | 450,343 | 0.4 % | Turkish CERT — massive, mostly long-tail |
+| The_Block_List_Project_Fraud | 195,998 | 195,629 | 0.2 % | Fraud-focused, highly differentiated |
+| Phishing_Army | 146,318 | 15,009 | 89.7 % | Re-aggregator; corroborates others |
+| CERT_Polska | 132,599 | 1,479 | 98.9 % | Polish CERT; mostly overlaps |
+| StopForumSpam_ToxicDomains | 72,797 | 72,730 | 0.1 % | Forum-spam domains, niche |
+| ThreatFox | 58,443 | 57,817 | 1.1 % | abuse.ch malware C2 — high value |
+| KADhosts | 49,194 | 27,011 | 45.1 % | Mixed phishing + ads |
+| Redflag | 37,101 | 37,081 | 0.1 % | FR phishing focus |
+| Miroslav_Stampar | 18,146 | 17,183 | 5.3 % | Maltrail blackbook |
+| DandelionSprout | 11,616 | 11,539 | 0.7 % | Anti-malware filter list |
+| GlobalAntiScamOrg | 11,193 | 11,188 | 0.0 % | Scam-specific, unique angle |
+| Hexxium_Creations | 3,881 | 3,764 | 3.0 % | Curated malicious hosts |
+| FadeMind | 2,189 | 2,112 | 3.5 % | Hosts.extras risk list |
+| The_Block_List_Project_Ransomware | 1,904 | 1,793 | 5.8 % | Ransomware-only |
+| Mitchell_Krog | 1,384 | 1,367 | 1.2 % | Badd-Boyz-Hosts |
 | The_Block_List_Project_Scam | 1,274 | 1,195 | 6.2 % | Scam-focused |
-| MetaMask | 1,071 | 1,071 | 0.0 % | Crypto-phishing wallets |
-| Abuse.ch | 514 | 369 | 28.2 % | URLhaus active hosts |
-| OpenPhish | 269 | 72 | 73.2 % | Live phishing, very fresh |
-| QuidsUp | 129 | 116 | 10.1 % | Small malware list |
-| USOM | 0 | 0 | 0.0 % | Turkish CERT — massive, mostly long-tail |
+| MetaMask | 1,071 | 1,069 | 0.2 % | Crypto-phishing wallets |
+| Abuse.ch | 515 | 371 | 28.0 % | URLhaus active hosts |
+| OpenPhish | 265 | 38 | 85.7 % | Live phishing, very fresh |
+| QuidsUp | 129 | 108 | 16.3 % | Small malware list |
 
 ### False positives intercepted
 
-The 37 strict FPs excluded from `consolidated.hosts` are dominated by widely-used platforms incorrectly flagged in one feed. A sample of what gets caught:
+The 47 strict FPs excluded from `consolidated.hosts` are dominated by widely-used platforms incorrectly flagged in one feed. A sample of what gets caught:
 
 | Domain | Tranco rank | Reported by |
 |---|---:|---|
-| myshopify.com | 322 | GlobalAntiScamOrg |
-| vkontakte.ru | 481 | Phishing_Army |
-| us.com | 992 | GlobalAntiScamOrg |
-| sportybet.com | 1381 | StopForumSpam_ToxicDomains |
-| ey43.com | 1528 | DandelionSprout |
+| myshopify.com | 323 | GlobalAntiScamOrg |
+| vkontakte.ru | 480 | Phishing_Army |
+| us.com | 991 | GlobalAntiScamOrg |
+| sportybet.com | 1379 | StopForumSpam_ToxicDomains |
+| ey43.com | 1530 | DandelionSprout |
 
-The full review list (`false_positives.csv`, 2,043 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
+The full review list (`false_positives.csv`, 2,714 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
 
-<sub>Auto-generated from `output/last_run.json` at 2026-05-21 07:38:09 UTC. Do not edit this section by hand.</sub>
+<sub>Auto-generated from `output/last_run.json` at 2026-05-22 07:27:38 UTC. Do not edit this section by hand.</sub>
 <!-- END AUTO-KPI -->
 
 ## Download the daily feed
