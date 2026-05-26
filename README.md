@@ -24,17 +24,17 @@ The output answers questions like:
 
 <!-- BEGIN AUTO-KPI -->
 
-Numbers from the latest run committed in `output/` (run on **2026-05-25**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
+Numbers from the latest run committed in `output/` (run on **2026-05-26**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
 
 ### Volume
 
 | Metric | Value |
 |---|---:|
 | Sources monitored | **20** |
-| Unique IOCs aggregated | **1,042,292** |
-| Entries in `consolidated.hosts` | **1,042,243** |
+| Unique IOCs aggregated | **1,042,442** |
+| Entries in `consolidated.hosts` | **1,042,393** |
 | Strict false positives excluded (Tranco top 10,000 + whitelist) | **49** |
-| FP review candidates reported (any Tranco rank) | **2,824** |
+| FP review candidates reported (any Tranco rank) | **2,821** |
 
 ### Consensus distribution
 
@@ -42,10 +42,10 @@ How many sources independently report each IOC. Most threats are seen by a singl
 
 | Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
 |---|---:|---:|---:|
-| 1 source | 908,889 | 87.2 % | 1,042,292 (N=1) |
-| 2 sources | 112,888 | 10.8 % | **133,403 (N=2)** |
-| 3 sources | 20,485 | 2.0 % | **20,515 (N=3)** |
-| 4 sources | 30 | 0.0 % | **30 (N=4)** |
+| 1 source | 909,220 | 87.2 % | 1,042,442 (N=1) |
+| 2 sources | 112,590 | 10.8 % | **133,222 (N=2)** |
+| 3 sources | 20,603 | 2.0 % | **20,632 (N=3)** |
+| 4 sources | 29 | 0.0 % | **29 (N=4)** |
 
 Raise `--min-consensus` to trade coverage for confidence depending on tolerance for false positives in downstream blocking.
 
@@ -55,16 +55,16 @@ Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
 
 | Source | Valid IOCs | Unique | Overlap % | Notes |
 |---|---:|---:|---:|---|
-| USOM | 452,443 | 450,704 | 0.4 % | Turkish CERT — massive, mostly long-tail |
+| USOM | 452,539 | 450,801 | 0.4 % | Turkish CERT — massive, mostly long-tail |
 | The_Block_List_Project_Fraud | 195,998 | 195,629 | 0.2 % | Fraud-focused, highly differentiated |
-| Phishing_Army | 146,266 | 15,261 | 89.6 % | Re-aggregator; corroborates others |
-| CERT_Polska | 132,399 | 1,531 | 98.8 % | Polish CERT; mostly overlaps |
-| StopForumSpam_ToxicDomains | 72,859 | 72,792 | 0.1 % | Forum-spam domains, niche |
-| ThreatFox | 58,216 | 57,668 | 0.9 % | abuse.ch malware C2 — high value |
-| KADhosts | 46,842 | 25,823 | 44.9 % | Mixed phishing + ads |
-| Redflag | 37,742 | 37,722 | 0.1 % | FR phishing focus |
+| Phishing_Army | 146,124 | 15,354 | 89.5 % | Re-aggregator; corroborates others |
+| CERT_Polska | 132,103 | 1,498 | 98.9 % | Polish CERT; mostly overlaps |
+| StopForumSpam_ToxicDomains | 72,890 | 72,823 | 0.1 % | Forum-spam domains, niche |
+| ThreatFox | 58,301 | 57,707 | 1.0 % | abuse.ch malware C2 — high value |
+| KADhosts | 47,092 | 25,943 | 44.9 % | Mixed phishing + ads |
+| Redflag | 37,752 | 37,732 | 0.1 % | FR phishing focus |
 | Miroslav_Stampar | 18,146 | 17,183 | 5.3 % | Maltrail blackbook |
-| DandelionSprout | 11,616 | 11,539 | 0.7 % | Anti-malware filter list |
+| DandelionSprout | 11,616 | 11,540 | 0.7 % | Anti-malware filter list |
 | GlobalAntiScamOrg | 11,193 | 11,188 | 0.0 % | Scam-specific, unique angle |
 | Hexxium_Creations | 3,881 | 3,764 | 3.0 % | Curated malicious hosts |
 | FadeMind | 2,189 | 2,112 | 3.5 % | Hosts.extras risk list |
@@ -72,8 +72,8 @@ Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
 | Mitchell_Krog | 1,384 | 1,367 | 1.2 % | Badd-Boyz-Hosts |
 | The_Block_List_Project_Scam | 1,274 | 1,195 | 6.2 % | Scam-focused |
 | MetaMask | 1,071 | 1,069 | 0.2 % | Crypto-phishing wallets |
-| Abuse.ch | 420 | 349 | 16.9 % | URLhaus active hosts |
-| OpenPhish | 268 | 92 | 65.7 % | Live phishing, very fresh |
+| Abuse.ch | 468 | 350 | 25.2 % | URLhaus active hosts |
+| OpenPhish | 271 | 64 | 76.4 % | Live phishing, very fresh |
 | QuidsUp | 129 | 108 | 16.3 % | Small malware list |
 
 ### False positives intercepted
@@ -82,15 +82,15 @@ The 49 strict FPs excluded from `consolidated.hosts` are dominated by widely-use
 
 | Domain | Tranco rank | Reported by |
 |---|---:|---|
-| myshopify.com | 325 | GlobalAntiScamOrg |
-| vkontakte.ru | 477 | Phishing_Army |
-| us.com | 997 | GlobalAntiScamOrg |
-| sportybet.com | 1381 | StopForumSpam_ToxicDomains |
-| ey43.com | 1544 | DandelionSprout |
+| myshopify.com | 326 | GlobalAntiScamOrg |
+| vkontakte.ru | 478 | Phishing_Army |
+| us.com | 999 | GlobalAntiScamOrg |
+| sportybet.com | 1383 | StopForumSpam_ToxicDomains |
+| ey43.com | 1546 | DandelionSprout |
 
-The full review list (`false_positives.csv`, 2,824 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
+The full review list (`false_positives.csv`, 2,821 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
 
-<sub>Auto-generated from `output/last_run.json` at 2026-05-25 07:53:31 UTC. Do not edit this section by hand.</sub>
+<sub>Auto-generated from `output/last_run.json` at 2026-05-26 07:26:55 UTC. Do not edit this section by hand.</sub>
 <!-- END AUTO-KPI -->
 
 ## Download the daily feed
