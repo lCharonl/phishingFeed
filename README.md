@@ -24,17 +24,17 @@ The output answers questions like:
 
 <!-- BEGIN AUTO-KPI -->
 
-Numbers from the latest run committed in `output/` (run on **2026-07-04**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
+Numbers from the latest run committed in `output/` (run on **2026-07-05**, default parameters: `--min-consensus 1 --fp-threshold 10000`).
 
 ### Volume
 
 | Metric | Value |
 |---|---:|
 | Sources monitored | **20** |
-| Unique IOCs aggregated | **380,257** |
-| Entries in `consolidated.hosts` | **380,223** |
-| Strict false positives excluded (Tranco top 10,000 + whitelist) | **34** |
-| FP review candidates reported (any Tranco rank) | **1,644** |
+| Unique IOCs aggregated | **601,457** |
+| Entries in `consolidated.hosts` | **601,413** |
+| Strict false positives excluded (Tranco top 10,000 + whitelist) | **44** |
+| FP review candidates reported (any Tranco rank) | **2,346** |
 
 ### Consensus distribution
 
@@ -42,10 +42,11 @@ How many sources independently report each IOC. Most threats are seen by a singl
 
 | Reported by | IOCs | Share | Cumulative if `--min-consensus = N` |
 |---|---:|---:|---:|
-| 1 source | 251,675 | 66.2 % | 380,257 (N=1) |
-| 2 sources | 108,653 | 28.6 % | **128,582 (N=2)** |
-| 3 sources | 19,921 | 5.2 % | **19,929 (N=3)** |
-| 4 sources | 8 | 0.0 % | **8 (N=4)** |
+| 1 source | 449,519 | 74.7 % | 601,457 (N=1) |
+| 2 sources | 127,706 | 21.2 % | **151,938 (N=2)** |
+| 3 sources | 7,372 | 1.2 % | **24,232 (N=3)** |
+| 4 sources | 16,854 | 2.8 % | **16,860 (N=4)** |
+| 5 sources | 6 | 0.0 % | **6 (N=5)** |
 
 Raise `--min-consensus` to trade coverage for confidence depending on tolerance for false positives in downstream blocking.
 
@@ -55,42 +56,42 @@ Sorted by `valid_iocs`. `unique_to_source` counts IOCs no other feed reports —
 
 | Source | Valid IOCs | Unique | Overlap % | Notes |
 |---|---:|---:|---:|---|
-| Phishing_Army | 145,585 | 17,468 | 88.0 % | Re-aggregator; corroborates others |
-| CERT_Polska | 129,849 | 1,737 | 98.7 % | Polish CERT; mostly overlaps |
-| StopForumSpam_ToxicDomains | 74,579 | 74,528 | 0.1 % | Forum-spam domains, niche |
-| KADhosts | 46,198 | 25,921 | 43.9 % | Mixed phishing + ads |
-| ThreatFox | 43,112 | 42,966 | 0.3 % | abuse.ch malware C2 — high value |
-| Redflag | 39,013 | 39,003 | 0.0 % | FR phishing focus |
-| Miroslav_Stampar | 18,146 | 18,116 | 0.2 % | Maltrail blackbook |
-| DandelionSprout | 11,732 | 11,693 | 0.3 % | Anti-malware filter list |
-| GlobalAntiScamOrg | 11,193 | 11,191 | 0.0 % | Scam-specific, unique angle |
-| Hexxium_Creations | 3,881 | 3,842 | 1.0 % | Curated malicious hosts |
-| FadeMind | 2,189 | 2,175 | 0.6 % | Hosts.extras risk list |
-| Mitchell_Krog | 1,384 | 1,373 | 0.8 % | Badd-Boyz-Hosts |
-| MetaMask | 1,071 | 1,071 | 0.0 % | Crypto-phishing wallets |
-| Abuse.ch | 439 | 334 | 23.9 % | URLhaus active hosts |
-| OpenPhish | 282 | 145 | 48.6 % | Live phishing, very fresh |
-| QuidsUp | 123 | 112 | 8.9 % | Small malware list |
-| The_Block_List_Project_Fraud | 0 | 0 | 0.0 % | Fraud-focused, highly differentiated |
-| The_Block_List_Project_Ransomware | 0 | 0 | 0.0 % | Ransomware-only |
-| The_Block_List_Project_Scam | 0 | 0 | 0.0 % | Scam-focused |
+| The_Block_List_Project_Fraud | 256,184 | 211,302 | 17.5 % | Fraud-focused, highly differentiated |
+| Phishing_Army | 145,438 | 17,348 | 88.1 % | Re-aggregator; corroborates others |
+| CERT_Polska | 129,750 | 1,629 | 98.7 % | Polish CERT; mostly overlaps |
+| StopForumSpam_ToxicDomains | 74,590 | 74,529 | 0.1 % | Forum-spam domains, niche |
+| KADhosts | 45,450 | 2,648 | 94.2 % | Mixed phishing + ads |
+| ThreatFox | 43,137 | 42,975 | 0.4 % | abuse.ch malware C2 — high value |
+| Redflag | 39,052 | 39,035 | 0.0 % | FR phishing focus |
+| Miroslav_Stampar | 18,146 | 18,108 | 0.2 % | Maltrail blackbook |
+| DandelionSprout | 11,732 | 11,676 | 0.5 % | Anti-malware filter list |
+| GlobalAntiScamOrg | 11,193 | 11,189 | 0.0 % | Scam-specific, unique angle |
+| The_Block_List_Project_Scam | 8,528 | 8,277 | 2.9 % | Scam-focused |
+| Hexxium_Creations | 3,881 | 3,753 | 3.3 % | Curated malicious hosts |
+| FadeMind | 2,189 | 2,118 | 3.2 % | Hosts.extras risk list |
+| The_Block_List_Project_Ransomware | 1,904 | 1,904 | 0.0 % | Ransomware-only |
+| Mitchell_Krog | 1,384 | 1,370 | 1.0 % | Badd-Boyz-Hosts |
+| MetaMask | 1,071 | 1,062 | 0.8 % | Crypto-phishing wallets |
+| Abuse.ch | 478 | 357 | 25.3 % | URLhaus active hosts |
+| OpenPhish | 263 | 132 | 49.8 % | Live phishing, very fresh |
+| QuidsUp | 123 | 107 | 13.0 % | Small malware list |
 | USOM | 0 | 0 | 0.0 % | Turkish CERT — massive, mostly long-tail |
 
 ### False positives intercepted
 
-The 34 strict FPs excluded from `consolidated.hosts` are dominated by widely-used platforms incorrectly flagged in one feed. A sample of what gets caught:
+The 44 strict FPs excluded from `consolidated.hosts` are dominated by widely-used platforms incorrectly flagged in one feed. A sample of what gets caught:
 
 | Domain | Tranco rank | Reported by |
 |---|---:|---|
-| myshopify.com | 268 | GlobalAntiScamOrg |
-| vkontakte.ru | 451 | Phishing_Army |
-| us.com | 1078 | GlobalAntiScamOrg |
-| sportybet.com | 1389 | StopForumSpam_ToxicDomains |
-| bookmark.xxx | 1455 | Hexxium_Creations |
+| myshopify.com | 267 | GlobalAntiScamOrg |
+| vkontakte.ru | 449 | Phishing_Army |
+| us.com | 1079 | GlobalAntiScamOrg |
+| sportybet.com | 1388 | StopForumSpam_ToxicDomains |
+| bookmark.xxx | 1457 | Hexxium_Creations |
 
-The full review list (`false_positives.csv`, 1,644 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
+The full review list (`false_positives.csv`, 2,346 entries) also includes lower-popularity domains that **are not** excluded automatically — review and extend `whitelist.txt` as needed.
 
-<sub>Auto-generated from `output/last_run.json` at 2026-07-04 08:45:17 UTC. Do not edit this section by hand.</sub>
+<sub>Auto-generated from `output/last_run.json` at 2026-07-05 09:13:49 UTC. Do not edit this section by hand.</sub>
 <!-- END AUTO-KPI -->
 
 ## Download the daily feed
